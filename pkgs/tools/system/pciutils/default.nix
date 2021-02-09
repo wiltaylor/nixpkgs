@@ -31,7 +31,15 @@ stdenv.mkDerivation rec {
   installTargets = [ "install" "install-lib" ];
 
   # Get rid of update-pciids as it won't work.
-  postInstall = "rm $out/sbin/update-pciids $out/man/man8/update-pciids.8";
+  # Also copy latest pci.ids file (what update-pciids did)
+  # from https://pci-ids.ucw.cz/v2.2/pci.ids
+  #
+  # Note: Do not use fetchurl on this url as the data is dynamic
+  # and will break nixpkgs everytime it updates.
+  postInstall = ''
+    rm $out/sbin/update-pciids $out/man/man8/update-pciids.8
+    cp -f ${./pci.ids} $out/share/pci.ids
+  '';
 
   meta = with stdenv.lib; {
     homepage = "http://mj.ucw.cz/pciutils.html";

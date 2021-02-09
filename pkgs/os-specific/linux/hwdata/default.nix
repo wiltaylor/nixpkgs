@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "hwdata";
-  version = "0.335";
+  version = "0.344";
 
   src = fetchFromGitHub {
     owner = "vcrhonek";
     repo = "hwdata";
     rev = "v${version}";
-    sha256 = "0f8ikwfrs6xd5sywypd9rq9cln8a0rf3vj6nm0adwzn1p8mgmrb2";
+    sha256 = "6uSIFJnpe2HG6fNNG1G5xIY4xBDOTGlQhpoElEmqVmc=";
   };
 
   preConfigure = "patchShebangs ./configure";
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
 
   outputHashMode = "recursive";
   outputHashAlgo = "sha256";
-  outputHash = "101lppd1805drwd038b4njr5czzjnqqxf3xlf6v3l22wfwr2cn3l";
+  outputHash = "31ligZpLsYSQQGw5n3Zw6pE4sPf4RGKdJstN/Rv1NAQ=";
 
   meta = {
     homepage = "https://github.com/vcrhonek/hwdata";
